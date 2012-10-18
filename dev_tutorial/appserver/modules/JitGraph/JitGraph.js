@@ -1,4 +1,4 @@
-// A treemap renderer
+// Force directed graph renderer
 Splunk.Module.JitGraph = $.klass(Splunk.Module.DispatchingModule, {
 
     /*
