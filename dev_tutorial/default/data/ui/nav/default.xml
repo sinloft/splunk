@@ -1,0 +1,15 @@
+<nav>
+  <collection label="Examples">
+    <view name="Example1" />
+    <view name="Example2" />
+    <view name="Example3" />
+    <view name="Example4" />
+    <view name="Example5" />
+    <view name="Example6" />
+    <view name="Example6b" />
+    <view name="Example6Sigma" />
+    <view name="Example6JitGraph" />
+    <view name="Example7" />
+    <view name="Example8" />
+  </collection> 
+</nav>

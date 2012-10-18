@@ -1,0 +1,14 @@
+table.simpleResultsTable tbody
+{
+	background: #ebf2e6;
+}
+table.simpleResultsTable td
+{
+	color: #669;
+	border-top: 1px dashed #fff;
+}
+table.simpleResultsTable tbody tr:hover td
+{
+	color: #339;
+	background: #b3d09f;
+}

@@ -1,0 +1,9 @@
+.CustomResultsHeader {
+    min-height:0px;
+    clear:both;
+}
+.CustomResultsHeader h3 {
+    margin:0px;
+    padding:0px;
+    color: #73A550;
+}

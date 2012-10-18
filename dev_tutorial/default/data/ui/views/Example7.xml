@@ -1,0 +1,31 @@
+<view template="dashboard.html">
+  <label>Example 7: Parameterizing a Module</label>
+  <module name="AccountBar" layoutPanel="appHeader"/>
+  <module name="AppBar" layoutPanel="navigationHeader"/>
+  <module name="Message" layoutPanel="messaging">
+    <param name="filter">*</param>
+    <param name="clearOnJobDispatch">False</param>
+    <param name="maxSize">1</param>
+  </module>
+  
+  <module name="StaticContentSample" layoutPanel="panel_row1_col1">
+    <param name="text"><![CDATA[
+      <h1>Example 7: Parameterizing a Module</h1>
+        <p>  
+          This example shows you how to statically parameterize your module when the app starts by specifying properties in the module configuration file.
+        </p>
+        <p>  
+          Search string: <tt>index=_internal source=*metrics.log group=pipeline | stats sum(cpu_seconds) as totalCPU by name, processor</tt>
+        </p>
+        <p>
+          Example6 used hardcoded values for the treemap height and width.  This example lets you specify those values in the <tt>ParameterizedTreeMap.conf</tt> configuration file.
+        </p>
+    ]]></param>
+  </module>
+  
+  <module name="HiddenSearch" layoutPanel="panel_row2_col1" group="Threshold events" autoRun="True">
+    <param name="search">index=_internal source=*metrics.log group=pipeline | stats sum(cpu_seconds) as totalCPU by name, processor</param>
+    <param name="earliest">-7d</param>
+    <module name="ParameterizedTreeMap"></module>
+  </module>
+</view>

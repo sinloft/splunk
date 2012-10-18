@@ -1,0 +1,29 @@
+<view template="dashboard.html" stylesheet="example2Styles.css">
+  <label>Example 3: Adding Dynamic Behavior to an Application</label>
+  <module name="AccountBar" layoutPanel="appHeader"/>
+  <module name="AppBar" layoutPanel="navigationHeader"/>
+  <module name="Message" layoutPanel="messaging">
+    <param name="filter">*</param>
+    <param name="clearOnJobDispatch">False</param>
+    <param name="maxSize">1</param>
+  </module>
+  
+  <module name="StaticContentSample" layoutPanel="panel_row1_col1">
+    <param name="text"><![CDATA[
+      <h1>Example 3: Adding Dynamic Behavior to an Application</h1>
+        <p>  
+          This builds on Example2 by using custom JavaScript to handle clicking on a table row.  On click, the indexer stage name associated with the row is displayed.
+        </p>
+    ]]></param>
+  </module>
+
+  <module name="HiddenSearch" layoutPanel="panel_row2_col1" group="CPU Utilization, other behavior" autoRun="True">
+    <param name="search">index=_internal source=*metrics.log group=pipeline | stats sum(cpu_seconds) as totalCPU by name</param>
+    <param name="earliest">-7d</param>
+    <module name="SimpleResultsTable">
+      <param name="drilldown">row</param>
+      <param name="displayMenu">true</param>
+      <module name="NullModule"></module>
+    </module>
+  </module>
+</view>

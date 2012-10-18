@@ -1,0 +1,24 @@
+.CustomResultsTable {
+    clear:both;
+    padding:0px;
+    _padding:0px 5px;
+}
+.CustomResultsTable .CustomResultsTableWrapper {
+	overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0px 10px;
+    _padding: 0px;
+    _width:100%;
+    *position:relative;
+}
+.CustomResultsTable table.CustomResultsTable {
+    white-space:nowrap;   
+}
+.CustomResultsTable table.CustomResultsTable td.pos,
+.CustomResultsTable table.CustomResultsTable th.pos {
+    padding: 3px 10px 5px 5px;
+    width: 15px;
+}
+.CustomResultsTable splMenu ul {
+    margin-top: -2px
+}

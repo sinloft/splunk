@@ -1,0 +1,54 @@
+<view autoCancelInterval="100" onunloadCancelJobs="False">
+  <!--  autoCancelInterval is set here to 100  -->
+  <label>Search and Display Results in a Graph</label>
+
+  <module name="AccountBar" layoutPanel="appHeader" />
+
+  <module name="AppBar" layoutPanel="navigationHeader" />
+
+  <module name="Message" layoutPanel="messaging">
+    <param name="filter">*</param>
+    <param name="clearOnJobDispatch">False</param>
+    <param name="maxSize">1</param>
+  </module>
+
+  <module name="SearchBar" layoutPanel="splSearchControls-inline">
+    <param name="useAssistant">true</param>
+    <param name="useTypeahead">true</param>
+    <param name="useOwnSubmitButton">False</param>
+    <param name="useAutoFocus">True</param>
+
+    <module name="TimeRangePicker">
+      <param name="selected">All time</param>
+      <param name="searchWhenChanged">True</param>
+
+      <module name="SubmitButton">
+        <param name="allowSoftSubmit">True</param>
+        <param name="updatePermalink">True</param>
+
+        <module name="JobStatus" layoutPanel="graphArea">
+          <param name="showSaveMenu">True</param>
+          <param name="showCreateMenu">True</param>
+          <param name="actionsMenuFilter">flashtimeline</param>
+          <param name="resultsLink">
+            <param name="popup">True</param>
+            <param name="viewTarget">report_builder_define_data</param>
+            <param name="transformedResultsViewTarget">report_builder_format_report</param>
+          </param>
+
+          <module name="Message">
+            <param name="filter">splunk.search.job</param>
+            <param name="clearOnJobDispatch">True</param>
+            <param name="maxSize">2</param>
+          </module>
+
+          <module name="JitGraph" />
+
+          <module name="EventsViewer" />
+
+          <module name="Pager" />
+        </module>
+      </module>
+    </module>
+  </module>
+</view>

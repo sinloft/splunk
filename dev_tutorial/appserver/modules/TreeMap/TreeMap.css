@@ -1,0 +1,24 @@
+.TreeMap {
+    clear:both;
+    padding:0px;
+    _padding:0px 5px;
+}
+.TreeMap .CustomResultsTableWrapper {
+	overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0px 10px;
+    _padding: 0px;
+    _width:100%;
+    *position:relative;
+}
+.TreeMap table.TreeMap {
+    white-space:nowrap;   
+}
+.TreeMap table.TreeMap td.pos,
+.TreeMap table.TreeMap th.pos {
+    padding: 3px 10px 5px 5px;
+    width: 15px;
+}
+.TreeMap splMenu ul {
+    margin-top: -2px
+}

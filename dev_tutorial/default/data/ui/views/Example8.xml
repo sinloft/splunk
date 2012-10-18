@@ -1,0 +1,23 @@
+<view template="dashboard.html">
+  <label>Example 8: Setting up an App (MVC)</label>
+  <module name="AccountBar" layoutPanel="appHeader"/>
+  <module name="AppBar" layoutPanel="navigationHeader"/>
+  <module name="Message" layoutPanel="messaging">
+    <param name="filter">*</param>
+    <param name="clearOnJobDispatch">False</param>
+    <param name="maxSize">1</param>
+  </module>
+  
+  <module name="StaticContentSample" layoutPanel="panel_row1_col1">
+    <param name="text"><![CDATA[
+      <h1>Example 8: Setting up an App (MVC)</h1>
+        <p>  
+          App setup involves configuring configuration objects using HTML forms.  This differs from Module Controllers, which facilitate asynchronous context, search, and job processing.  (Setup demonstrates how to use the MVC architectural pattern implemented by the App Framework.)
+        </p>
+    ]]></param>
+  </module>
+  
+  <module name="IFrameInclude" layoutPanel="panel_row2_col1">
+    <param name="src">/custom/dev_tutorial/TutorialSetup/show</param>
+  </module>
+</view>

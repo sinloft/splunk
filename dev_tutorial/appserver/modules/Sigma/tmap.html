@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Treemap</title>
+    <link rel="stylesheet" type="text/css" href="tmap.css"/>
+    <script type="text/javascript" src="protovis.js"></script>
+    <script type="text/javascript" src="flare.js"></script>
+  </head>
+  
+  <body>
+    <div id="TreeMapID" class="TreeMapResults"></div>
+
+    <script type="text/javascript+protovis">
+
+/** Computes the full class name of a given node. */
+function title(d) {
+  return d.parentNode ? (title(d.parentNode) + "." + d.nodeName) : d.nodeName;
+}
+
+var re = "",
+    color = pv.Colors.category19().by(function(d) d.parentNode.nodeName)
+    nodes = pv.dom(flare).root("flare").nodes();
+
+var vis = new pv.Panel()
+    .width(860)
+    .height(568)
+    .canvas(document.getElementById('TreeMapID'));
+/*    .canvas($('#TreeMapID')[0]); */ 
+
+var treemap = vis.add(pv.Layout.Treemap)
+    .nodes(nodes)
+    .round(true);
+
+treemap.leaf.add(pv.Panel)
+    .fillStyle(function(d) color(d).alpha(title(d).match(re) ? 1 : .2))
+    .strokeStyle("#fff")
+    .lineWidth(1)
+    .antialias(false);
+
+treemap.label.add(pv.Label)
+    .textStyle(function(d) pv.rgb(0, 0, 0, title(d).match(re) ? 1 : .2));
+
+vis.render();
+
+    </script>
+
+  </body>
+</html>
