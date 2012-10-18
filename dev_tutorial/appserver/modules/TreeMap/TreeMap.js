@@ -1,5 +1,4 @@
 // A treemap renderer
-// another comment
 Splunk.Module.TreeMap = $.klass(Splunk.Module.DispatchingModule, {
 
     /*
