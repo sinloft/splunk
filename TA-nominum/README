@@ -1,0 +1,25 @@
+===Nominum Technology Add-on===
+
+   Author: LC Systems (C. Wiederkehr)
+
+   Version/Date: 1.0  03.10.2012
+
+   Supported product(s): Vantio
+
+   Source type(s): nominum:vantio
+
+   Input requirements: 
+      Make sure that your vantio log has the sourcetype 'nominum:vantio' -> this is the easy, therefore the recommended way
+      If you write your vantio log data to syslog (and mingle-mangle it with a lot of other stuff) you have to create the nominum:vantio sourcetype 
+      Something like this will work:
+      props.conf  
+         [syslog]
+         TRANSFORM-sourcetype = set_sourcetype_for_nominum_vantio
+
+
+      transforms.conf
+         [set_sourcetype_for_nominum_vantio]
+         REGEX = Vantio
+         FORMAT = sourcetype::nominum:vantio
+         DEST_KEY = MetaData:Sourcetype
+

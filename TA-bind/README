@@ -1,0 +1,61 @@
+
+Describe the Technology Add-on here, including:
+ * The source type that the Technology Add-on handles
+ * Products (and versions) that the Technology Add-on handles (or is known to work with)
+ * Any configuration necessary to support the Technology Add-on (either with the Technology Add-on itself or on the device that generates the messages)
+
+
+Template to use for your README:
+
+===Product Name Technology Add-on===
+
+   Author: Chris Wiederkehr
+
+   Version/Date: 0.1 September 2012
+
+   Supported product(s): Bind 9.9 (maybe 9.x)
+
+   Source type(s): bind (queries,xfer-out,xfer-in,security),syslog (queries)
+
+   Input requirements: Bind has to log its events ... either to syslog (ok,easy) or to a seperate log (I like,takes a little more time,easier to work with later on)
+
+
+   ===Using this Technology Add-on===
+
+   Configuration: Manual
+
+   If you just want the query logs then this will toggle (turn on/turn off) query logging to syslog:
+   # rndc querylog
+
+   You can configure bind to log different categories of logs to a (or many)  file(s). This is what I used in my named.conf:
+        logging{
+          channel simple_log {
+          file "/var/log/named/bind.log" versions 3 size 100m;
+          # choose how much detail you want: critical, error, warning, notice,  info,  debug [level], dynamic
+          # info was ok for the tests I made...
+          severity info;        
+          print-time yes;
+          print-severity yes;
+          print-category yes;
+          };
+          channel syslog {
+           syslog daemon;       # send to syslog's daemon facility
+           severity info;       # choose how much detail you want
+
+          };
+          category queries{
+            simple_log;
+            syslog;
+          };
+          category security{
+            simple_log;
+          };
+          category xfer-out{
+            simple_log;
+          };
+          category xfer-in{
+            simple_log;
+          };
+        };
+
+

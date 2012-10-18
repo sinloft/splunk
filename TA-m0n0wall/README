@@ -1,0 +1,27 @@
+
+===m0n0wall Technology Add-on===
+
+   Author: Christoph Wiederkehr
+
+   Version/Date: 01 Oct 2012
+
+   Supported product(s): 1.33 
+
+   Source type(s): m0n0wall:ipmon    -> ok
+                   m0n0wall:dhcpd    -> ok
+                   m0n0wall:dhclient -> field extraction not done yet
+                   m0n0wall:hostapd  -> field extraction not done yet
+                   m0n0wall:kernel   -> field extraction not done yet
+                   m0n0wall:racoon   -> field extraction not done yet
+
+   Input requirements: Syslog'ing to a remote syslog server has to be enabled on the m0n0wall to receive events.
+                       It is recommended to write the logs to file locally and then read them (via a forwarder or on the indexer directly)
+                       that way you do not loose (fire & forget udp) data when the indexer has an outage Splunk will just start 
+                       indexing where it stopped.
+
+   ===Using this Technology Add-on===
+
+   Configuration: Manual
+
+   Set the sourcetype of your m0n0wall (there is an example inputs.conf) to m0n0wall:general the TA will then classify 
+
