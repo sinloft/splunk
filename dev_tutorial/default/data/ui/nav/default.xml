@@ -11,5 +11,7 @@
     <view name="Example6JitGraph" />
     <view name="Example7" />
     <view name="Example8" />
+    <view name="jitGraph" />
+    <view name="forceGraph" />
   </collection> 
 </nav>

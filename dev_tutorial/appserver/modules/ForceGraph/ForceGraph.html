@@ -1,0 +1,6 @@
+<%page args="module" expression_filter="h"/>
+<%namespace name="lib" file="//lib.html" import="*"/>
+<%lib:script_tags files="${['/static/app/%s/d3.v2.min.js' % APP['id']]}" />
+
+
+    <div id="ForceGraphID" class="ForceGraphResults" style="width:${module["width"] | h}; height:${module["height"] | h};"></div>

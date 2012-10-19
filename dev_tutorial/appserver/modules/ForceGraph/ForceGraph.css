@@ -1,0 +1,64 @@
+.ForceGraph path.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+.ForceGraph marker#none{
+  fill: black;
+}
+.ForceGraph path.link.none{
+  stroke: black;
+  stroke-opacity: 0.4
+}
+
+.ForceGraph marker#success{
+  fill: green;
+}
+.ForceGraph path.link.success{
+  stroke: green;
+  stroke-opacity: 0.4
+}
+.ForceGraph marker#allowed{
+  fill: green;
+}
+.ForceGraph path.link.allowed{
+  stroke: green;
+  stroke-opacity: 0.4
+}
+
+
+.ForceGraph marker#failed{
+  fill: red;
+}
+.ForceGraph path.link.failed{
+  stroke: red;
+  stroke-opacity: 0.4
+}
+
+.ForceGraph marker#blocked{
+  fill: red;
+}
+.ForceGraph path.link.blocked{
+  stroke: red;
+  stroke-opacity: 0.4
+}
+
+
+.ForceGraph circle {
+  fill: #ccc;
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+.FoceGraph text {
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+.ForceGraph text.shadow {
+  stroke: #fff;
+  stroke-width: 3px;
+  stroke-opacity: .8;
+}
+

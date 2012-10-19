@@ -8,6 +8,9 @@ Splunk.Module.JitGraph = $.klass(Splunk.Module.DispatchingModule, {
         $super(container);
         this.myParam = this.getParam("myParam");
         this.resultsContainer = this.container;
+
+
+
     },
 
     onJobDone: function(event) {
@@ -55,6 +58,13 @@ Splunk.Module.JitGraph = $.klass(Splunk.Module.DispatchingModule, {
     onResizeStop: function(event, ui) {
         $(event.target).width("100%");
         this.setParam("height", ui.size.height + "px");
+        //ugly ugly ugly
+        document.getElementById("JitGraphID-canvaswidget").style.height=ui.size.height + "px";
+        document.getElementById("JitGraphID-canvaswidget").style.width=ui.size.width+ "px";
+        document.getElementById("JitGraphID-canvas").style.height=ui.size.height + "px";
+        document.getElementById("JitGraphID-canvas").style.width=ui.size.width+ "px";
+        document.getElementById("JitGraphID-label").style.height=ui.size.height + "px";
+        document.getElementById("JitGraphID-label").style.width=ui.size.width+ "px";
     },
 
 
@@ -73,8 +83,14 @@ Splunk.Module.JitGraph = $.klass(Splunk.Module.DispatchingModule, {
         }
         console.debug("Done printing key value pairs");
 
+        //remove the canvas in case this is a refresh, infovis seems to inject a new div every time it is called
+        element = document.getElementById("JitGraphID-canvaswidget").getElementsByTagName("svg")[0];
+        if( element){
+              element.parentNode.removeChild(element);
+        }
 //remove children from our div (in case this is a refresh )
 //not very elegant I know
+/*
 var cell = document.getElementById("JitGraphID");
 
 if ( cell.hasChildNodes() )
@@ -84,6 +100,7 @@ if ( cell.hasChildNodes() )
         cell.removeChild( cell.firstChild );       
     } 
 }
+*/
 
 //start
 var labelType, useGradients, nativeTextSupport, animate;
@@ -104,7 +121,15 @@ var labelType, useGradients, nativeTextSupport, animate;
 })();
 
 
-
+var Log = {
+  elem: false,
+  write: function(text){
+    if (!this.elem) 
+      this.elem = document.getElementById('JitGraphLog');
+    this.elem.innerHTML = text;
+    //this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
+  }
+};
 
   var json = [
       {
@@ -270,17 +295,21 @@ var labelType, useGradients, nativeTextSupport, animate;
   });
   // load JSON data.
   //fd.loadJSON(json);
-  console.debug(results);
+  //console.debug(results);
+  Log.write('Loading results from Splunkd to Jitgraph');
   fd.loadJSON(results);
   // compute positions incrementally and animate.
   fd.computeIncremental({
     iter: 20,
     property: 'end',
     onStep: function(perc){
+      Log.write(perc + '% loaded...');
       console.debug(perc + '% loaded...');
     },
     onComplete: function(){
       console.debug('done');
+      //clear the log
+      Log.write('');
       fd.animate({
         modes: ['linear'],
         transition: $jit.Trans.Elastic.easeOut,
@@ -289,6 +318,9 @@ var labelType, useGradients, nativeTextSupport, animate;
     }
   });
   // end
+        //Stolen form FlashTimeline module if called here the bar is inserted below the graph
+        if (Splunk.util.normalizeBoolean(this.getParam("enableResize")))
+                    this.enableResizable();
 
        /* this.resultsContainer.html("Test");*/ 
     }
